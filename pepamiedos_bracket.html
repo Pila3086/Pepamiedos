@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Pepamiedos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Oswald:wght@700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --verde-pasto: #239b56;
+      --verde-oscuro: #145a32;
+      --gris-oscuro: #2d2d2d;
+      --blanco: #fff;
+      --rosa: #ff3380;
+      --negro: #121212;
+      --amarillo: #ffe066;
+      --borde: #e9e9e9;
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: repeating-linear-gradient(135deg, var(--verde-pasto), var(--verde-pasto) 40px, var(--verde-oscuro) 40px, var(--verde-oscuro) 80px);
+      font-family: 'Oswald', 'Archivo Black', Arial, sans-serif;
+      color: var(--blanco);
+      min-height: 100vh;
+    }
+    header {
+      background: rgba(18,18,18,0.98);
+      padding: 18px 0 10px 0;
+      text-align: center;
+      border-bottom: 5px solid var(--amarillo);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 24px #111a;
+    }
+    header h1 {
+      font-family: 'Archivo Black', Arial, sans-serif;
+      font-size: 2.1rem;
+      color: var(--amarillo);
+      margin: 0 0 2px 0;
+      letter-spacing: 2px;
+      text-shadow: 2px 2px 0 var(--verde-oscuro), 0 3px 8px #000b;
+      text-transform: uppercase;
+    }
+    header .subtitle {
+      font-family: 'Oswald', Arial, sans-serif;
+      color: var(--blanco);
+      font-size: 1rem;
+      margin-top: 1px;
+      letter-spacing: 1px;
+      text-shadow: 1px 1px 0 var(--verde-oscuro), 0 1px #0006;
+      text-transform: uppercase;
+    }
+    main {
+      padding: 0 2vw 24px;
+    }
+    h2 {
+      margin: 0;
+      padding: 10px 10px 7px 10px;
+      color: var(--amarillo);
+      background: linear-gradient(90deg, var(--verde-oscuro) 60%, var(--verde-pasto) 100%);
+      border-radius: 10px 10px 0 0;
+      font-family: 'Archivo Black', Arial, sans-serif;
+      font-size: 1.11rem;
+      border-bottom: 2.5px solid var(--amarillo);
+      text-shadow: 1px 1px #000d;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    #bracket-wrapper {
+      overflow-x: auto;
+      padding-bottom: 20px;
+    }
+    #bracket {
+      display: flex;
+      flex-direction: row;
+      gap: 40px;
+      min-width: 1000px;
+      padding: 20px;
+    }
+    .bracket-column {
+      flex: 1;
+    }
+    .match {
+      background: linear-gradient(90deg, #232a1e 60%, #183c21 100%);
+      color: var(--amarillo);
+      border: 2px solid var(--verde-pasto);
+      border-radius: 8px;
+      min-width: 100px;
+      margin: 10px 0;
+      font-size: 0.97rem;
+      font-family: 'Oswald', Arial, sans-serif;
+      font-weight: 500;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 1px 8px #0007;
+      letter-spacing: 1px;
+      text-align: center;
+      gap: 2px;
+    }
+    .club {
+      font-family: 'Archivo Black', Arial, sans-serif;
+      font-weight: bold;
+      color: #ffe066;
+      font-size: 1.03rem;
+      letter-spacing: 1px;
+      text-shadow: 1px 1px #0007;
+      text-transform: uppercase;
+      background: rgba(36,44,29,0.18);
+      padding: 2px 7px;
+      border-radius: 4px;
+      margin-bottom: 1px;
+    }
+    .score {
+      font-size: 1.15rem;
+      font-family: 'Archivo Black', Arial, sans-serif;
+      font-weight: bold;
+      color: #fffbea;
+      background: #ffeb3b20;
+      border-radius: 4px;
+      padding: 1px 5px;
+      letter-spacing: 2px;
+      text-shadow: 1px 1px #000b;
+      white-space: nowrap;
+      display: inline-block;
+    }
+    .penales {
+      font-size: 1.08rem;
+      color: var(--rosa);
+      font-family: 'Oswald', Arial, sans-serif;
+      font-weight: bold;
+      display: block;
+    }
+    .stats {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      margin-top: 30px;
+      padding: 10px;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
+    }
+    .stats > div {
+      background: #111a;
+      padding: 10px;
+      border-radius: 8px;
+      border: 2px solid var(--amarillo);
+      text-align: center;
+      width: 100%;
+      max-width: 400px;
+      margin-bottom: 10px;
+    }
+    .stats h3 {
+      margin: 0 0 10px;
+      font-size: 1rem;
+      color: var(--amarillo);
+      text-transform: uppercase;
+      text-shadow: 1px 1px #000;
+    }
+    .stats p {
+      font-size: 0.9rem;
+      color: var(--blanco);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Pepamiedos</h1>
+    <div class="subtitle">Confederación de Fútbol de Pepa</div>
+  </header>
+  <main>
+    <h2>Copa Pepa · Llaves</h2>
+    <div id="bracket-wrapper">
+      <div id="bracket"></div>
+    </div>
+    <div class="stats">
+      <div>
+        <h3>Máximos Goleadores</h3>
+        <p>En mantenimiento...</p>
+      </div>
+      <div>
+        <h3>Máximos Asistidores</h3>
+        <p>En mantenimiento...</p>
+      </div>
+    </div>
+  </main>
+  <script>
+    const cuartos = [
+      { local: "Bandicoot", golesLocal: 1, golesVisitante: 1, visitante: "Pepa Futbol", penales: [4, 5] },
+      { local: "Barcelona", golesLocal: 1, golesVisitante: 0, visitante: "Tutukas" },
+      { local: "Nanu Unión", golesLocal: 1, golesVisitante: 2, visitante: "Teodoro FC" },
+      { local: "Tigre", golesLocal: 1, golesVisitante: 0, visitante: "Universidad L.P." }
+    ];
+
+    const semis = [
+      { equipo1: "Pepa Futbol", equipo2: "Barcelona" },
+      { equipo1: "Teodoro FC", equipo2: "Tigre" }
+    ];
+
+    const final = { equipo1: "", equipo2: "" };
+
+    function crearMatch(titulo, local, scoreLocal, scoreVisitante, visitante, penales) {
+      let html = `<div class='match'><div><strong>${titulo}</strong></div>`;
+      html += `<div class='club'>${local}</div>`;
+      html += `<div class='score'>${scoreLocal} - ${scoreVisitante}</div>`;
+      if (penales && penales.length === 2) {
+        html += `<div class='penales'>Penales: ${penales[0]} - ${penales[1]}</div>`;
+      }
+      html += `<div class='club'>${visitante}</div>`;
+      html += `</div>`;
+      return html;
+    }
+
+    function renderBracket() {
+      const container = document.getElementById('bracket');
+      container.innerHTML = '';
+
+      const colCuartos = document.createElement('div');
+      colCuartos.className = 'bracket-column';
+      colCuartos.innerHTML = '<h2>Cuartos</h2>';
+      cuartos.forEach((m, i) => {
+        colCuartos.innerHTML += crearMatch(`Cuartos ${i + 1}`, m.local, m.golesLocal, m.golesVisitante, m.visitante, m.penales);
+      });
+
+      const colSemis = document.createElement('div');
+      colSemis.className = 'bracket-column';
+      colSemis.innerHTML = '<h2>Semis</h2>';
+      semis.forEach((m, i) => {
+        colSemis.innerHTML += crearMatch(`Semis ${i + 1}`, m.equipo1 || '---', 'vs', '', m.equipo2 || '---');
+      });
+
+      const colFinal = document.createElement('div');
+      colFinal.className = 'bracket-column';
+      colFinal.innerHTML = '<h2>Final</h2>';
+      colFinal.innerHTML += crearMatch('Final', final.equipo1 || '---', 'vs', '', final.equipo2 || '---');
+
+      container.appendChild(colCuartos);
+      container.appendChild(colSemis);
+      container.appendChild(colFinal);
+    }
+
+    window.onload = renderBracket;
+  </script>
+</body>
+</html>
